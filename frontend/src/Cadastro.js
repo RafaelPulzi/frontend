@@ -32,6 +32,26 @@ function Cadastro() {
         }
     }
 
+    const sendDataToAPI = async () => {
+        const userData = {
+          nm_usuario: 'Henrique',
+          data_nascimento: null,
+          tel_usuario: '5511976360119',
+          email_usuario: 'henriquess@teste.com',
+          senha_usuario: 'henrique'
+        };
+    
+        try {
+          const response = await axios.post('http://localhost:8000/register', userData);
+          console.log('Response:', response.data);
+          // Tratar a resposta da API aqui, se necessário
+        } catch (error) {
+          console.error('Erro ao fazer a requisição:', error);
+          // Tratar erros aqui, se necessário
+        }
+      };
+    
+
     return (
         <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
             <div className='bg-white p-3 rouded w-25'>
@@ -82,23 +102,5 @@ function Cadastro() {
     )
 }
 
-const sendDataToAPI = async () => {
-    const userData = {
-      nm_usuario: 'Henrique',
-      data_nascimento: null,
-      tel_usuario: '5511976360119',
-      email_usuario: 'henriquess@teste.com',
-      senha_usuario: 'henrique'
-    };
-
-    try {
-      const response = await axios.post('http://localhost:8000/register', userData);
-      console.log('Response:', response.data);
-      // Tratar a resposta da API aqui, se necessário
-    } catch (error) {
-      console.error('Erro ao fazer a requisição:', error);
-      // Tratar erros aqui, se necessário
-    }
-  };
 
 export default Cadastro
